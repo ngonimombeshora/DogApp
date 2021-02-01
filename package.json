@@ -1,0 +1,47 @@
+{
+  "name": "DogApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "_use:env": "cp .env.$npm_config_env .env",
+    "start:dev": "npm run _use:env --env=dev && sudo systemctl start mongod && nodemon index.js --exec babel-node --presets babel-preset-env",
+    "start:test": "npm run _use:env --env=test && sudo systemctl start mongod && nodemon index.js --exec babel-node --presets babel-preset-env",
+    "start:prod": "npm run _use:env --env=prod && sudo systemctl start mongod && nodemon index.js --exec babel-node --presets babel-preset-env",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-jest": "^26.6.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "jest": "^26.6.3",
+    "memory-cache": "^0.2.0",
+    "mongoose": "^5.11.13"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|)$": "babel-jest"
+    },
+    "rootDir": "src",
+    "testRegex": "[.]test[.]js$",
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.7"
+  }
+}
